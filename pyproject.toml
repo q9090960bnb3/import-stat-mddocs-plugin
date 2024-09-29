@@ -6,7 +6,7 @@ authors = ["q9090960bnb3 <q9090960bnb3@163.com>"]
 readme = "README.md"
 license = "MIT"
 keywords = ["mkdocs", "markdown", "import"]
-repository = "https://github.com/q9090960bnb3/import-stat-mkdocs-plugin.git"
+repository = "https://github.com/q9090960bnb3/mkdocs-import-stat-plugin.git"
 
 [tool.poetry.dependencies]
 python = "^3.10"
