@@ -7,7 +7,7 @@
 ### install
 
 ```sh
-pip install mkdocs-import-stat
+pip install mkdocs-import-stat-plugin
 ```
 
 ### use
