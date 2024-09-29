@@ -21,10 +21,15 @@ def match_import(line: str, page: Page) -> str | None:
     for elem in matches:
         tab_str = elem[0]
         file_path_name = elem[1]
+        config = get_config(elem[2])
+        p_dir = config.get('p_dir') 
+        
         if not path.isabs(file_path_name):
+            if p_dir:
+                file_path_name = path.join(p_dir, file_path_name)
             file_path_name = path.join(page.file.src_dir, file_path_name)
         
-        config = get_config(elem[2])
+        
         res = parse_content(tab_str, file_path_name, config)
         # print('res:', res)
     
@@ -39,7 +44,8 @@ def get_config(config_str: str) -> dict:
         config_str (str): 配置字符串
 
     Returns:
-        dict: _description_
+        dict: 配置字典 
+            p_dir 上级路径
     """    
     matches = re.findall(reg_config, config_str, flags=re.DOTALL)
 

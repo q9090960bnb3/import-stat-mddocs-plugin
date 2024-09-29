@@ -29,16 +29,49 @@ plugins:
 
 ## 拓展语法
 
+一下测试均在 `material` 主题中测试
+
 - `tab` 用于对整个代码块缩进，这样更好地与 material 的 tabs 兼容
 
 ```txt
 @import "hello.xxx" {tab}
 ```
 
-- 也可直接缩进使用，但markdown-preview-enhanced 插件在vscode中就会有渲染问题
+  - 也可直接缩进使用，但markdown-preview-enhanced 插件在vscode中就会有渲染问题
 
 ```txt
     @import "hello.xxx" 
+```
+
+- `p_dir` 用于指定上级路径
+
+eg:
+
+```sh
+.
+├── docs
+│   ├── code
+│   │   └── test.html
+│   ├── test_dir
+│   │   └── test.md
+```
+
+test.md
+
+```md
+# test
+
+@import "../code/test.html"
+```
+
+mkdocs 插件获取当前路径只会获取到 docs 层，最终导致找不到文件
+
+所以可以使用以下方式解决
+
+```md
+# test
+
+@import "../code/test.html" {p_dir="test_dir"}
 ```
 
 ## 清空flag
